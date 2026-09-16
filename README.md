@@ -1,5 +1,5 @@
 
-# BugTracker Pro - Homework 2 OOP
+# Ticket Tracking System
 
 ## Summary
 
@@ -9,7 +9,7 @@ In my implementation, I used the following design patterns: Visitor, Command, Bu
 
 ### Design Patterns:
 
-Visitor - the Visitor design pattern is paired with Command design pattern, the main use being to separate each command execution depending on the user type. Each user type executes the command differently and has access to different fields.
+Visitor - the Visitor design pattern is paired with the Command design pattern, the main use being to separate each command execution depending on the user type. Each user type executes the command differently and has access to different fields.
 
 Observer - the Observer design pattern is used to send notifications about each event change in order to add the notifications to a list that can be printed.
 
@@ -19,7 +19,7 @@ Builder - the Builder design pattern is used to construct the tickets, each tick
 
 Strategy - the Strategy design pattern is used for applying filters, each filter representing a different "strategy" of search.
 
-----------
+---
 
 ## Classes
 
@@ -146,65 +146,38 @@ Methods:
 
 Attributes:
 
--   `id`: unique identifier of the ticket
-    
--   `title`: short descriptive title
-    
--   `description`: detailed description of the issue or request
-    
--   `reportedBy`: username of the user who reported the ticket
-    
--   `type`: ticket type (`BUG`, `UI_FEEDBACK`, `FEATURE_REQUEST`)
-    
--   `businessPriority`: business priority (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`)
-    
--   `status`: current lifecycle status (`OPEN`, `IN_PROGRESS`, `RESOLVED`, `CLOSED`)
-    
--   `expertiseArea`: technical area required to resolve the ticket
-    
--   `milestone`: associated milestone
-    
--   `developer`: currently assigned developer
-    
--   `comments`: list of comments added to the ticket
-    
--   `history`: list of actions performed on the ticket
-    
--   `createdAt`, `assignedAt`, `solvedAt`: important timestamps
-    
--   `observers`: list of observers 
-    
+- `id`: unique identifier of the ticket
+- `title`: short descriptive title
+- `description`: detailed description of the issue or request
+- `reportedBy`: username of the user who reported the ticket
+- `type`: ticket type (`BUG`, `UI_FEEDBACK`, `FEATURE_REQUEST`)
+- `businessPriority`: business priority (`LOW`, `MEDIUM`, `HIGH`, `CRITICAL`)
+- `status`: current lifecycle status (`OPEN`, `IN_PROGRESS`, `RESOLVED`, `CLOSED`)
+- `expertiseArea`: technical area required to resolve the ticket
+- `milestone`: associated milestone
+- `developer`: currently assigned developer
+- `comments`: list of comments added to the ticket
+- `history`: list of actions performed on the ticket
+- `createdAt`, `assignedAt`, `solvedAt`: important timestamps
+- `observers`: list of observers
 
 Methods:
 
--   `assign`: assigns a developer, updates the status to `IN_PROGRESS`, sets timestamps, and records actions
-    
--   `unassign`: removes the assigned developer and reverts the ticket to `OPEN`
-    
--   `setStatus`: updates the ticket status, preventing changes once closed
-    
--   `increasePriority`: gradually increases the business priority
-    
--   `criticalPriority`: forces the priority to `CRITICAL` if the ticket is not closed
-    
--   `addComment` / `removeComment`: manages ticket comments
-    
--   `setMilestone`: associates the ticket with a milestone
-    
--   `notifyObservers`: sends notifications to all registered observers
-    
--   `getRequiredSeniorities`: returns the allowed developer seniority levels for assignment
-    
--   `canAssign`: checks if a developer can be assigned based on expertise compatibility
-    
--   `calculateCustomerImpact`: computes customer impact (abstract)
-    
--   `getTicketRisk`: computes ticket risk (abstract)
-    
--   `getEfficiency`: computes resolution efficiency (abstract)
-    
-For this class I used a Builder design pattern.
+- `assign`: assigns a developer, updates the status to `IN_PROGRESS`, sets timestamps, and records actions
+- `unassign`: removes the assigned developer and reverts the ticket to `OPEN`
+- `setStatus`: updates the ticket status, preventing changes once closed
+- `increasePriority`: gradually increases the business priority
+- `criticalPriority`: forces the priority to `CRITICAL` if the ticket is not closed
+- `addComment` / `removeComment`: manages ticket comments
+- `setMilestone`: associates the ticket with a milestone
+- `notifyObservers`: sends notifications to all registered observers
+- `getRequiredSeniorities`: returns the allowed developer seniority levels for assignment
+- `canAssign`: checks if a developer can be assigned based on expertise compatibility
+- `calculateCustomerImpact`: computes customer impact (abstract)
+- `getTicketRisk`: computes ticket risk (abstract)
+- `getEfficiency`: computes resolution efficiency (abstract)
 
+Tickets are constructed using the Builder pattern.
 ----------
 
 ### TicketBug
